@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_frontend/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,49 +8,28 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // PUBLIC_INTERFACE
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'AI Build Tool',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'to_do_frontend'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'to_do_frontend App is being generated...',
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 20),
-            CircularProgressIndicator(),
-          ],
+        // Ensure default font rendering and colors do not override the custom screen styling
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        scaffoldBackgroundColor: const Color(0xFF121212),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFF121212),
+          foregroundColor: Colors.white,
+          elevation: 0,
+        ),
+        textSelectionTheme: const TextSelectionThemeData(
+          cursorColor: Colors.white,
+          selectionHandleColor: Colors.white,
         ),
       ),
+      home: const LoginScreen(),
     );
   }
 }

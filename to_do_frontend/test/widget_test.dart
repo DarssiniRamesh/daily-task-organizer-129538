@@ -1,18 +1,23 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:to_do_frontend/main.dart';
 
 void main() {
-  testWidgets('App generation message displayed', (WidgetTester tester) async {
+  testWidgets('Login screen renders key elements', (WidgetTester tester) async {
     await tester.pumpWidget(const MyApp());
 
-    expect(find.text('to_do_frontend App is being generated...'), findsOneWidget);
-    expect(find.byType(CircularProgressIndicator), findsOneWidget);
-  });
+    // Title
+    expect(find.text('Login'), findsOneWidget);
 
-  testWidgets('App bar has correct title', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
+    // Labels
+    expect(find.text('Username'), findsOneWidget);
+    expect(find.text('Password'), findsOneWidget);
 
-    expect(find.text('to_do_frontend'), findsOneWidget);
+    // Buttons
+    expect(find.text('Login'), findsWidgets); // title + button label
+    expect(find.text('Login with Google'), findsOneWidget);
+    expect(find.text('Login with Appe'), findsOneWidget);
+
+    // Footer
+    expect(find.text('Don’t have an account? Register'), findsOneWidget);
   });
 }
